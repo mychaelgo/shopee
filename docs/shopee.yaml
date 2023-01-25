@@ -1,0 +1,204 @@
+openapi: 3.0.0
+info:
+  title: Shopee API
+  version: 1.0.1
+servers:
+  - url: 'https://api.gw.airpay.co.id'
+    description: Shopee pay server
+  - description: Shopee eCommerce server
+    url: 'https://mall.shopee.co.id'
+paths:
+  /user/v2/wallet-overview:
+    parameters: []
+    post:
+      summary: Get wallet overview
+      operationId: getWalletOverview
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: getWalletOverviewResponse
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      pending_guide_processes:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      buyer_wallet:
+                        type: object
+                        properties:
+                          user_id:
+                            type: string
+                          user_status:
+                            type: integer
+                          wallet_provider:
+                            type: integer
+                          wallet_balance:
+                            type: object
+                            properties:
+                              cashback:
+                                type: string
+                              incoming:
+                                type: string
+                              main:
+                                type: string
+                              non_transferable_balance:
+                                type: string
+                              outgoing:
+                                type: string
+                              pending:
+                                type: string
+                              refund:
+                                type: string
+                              special_cashback:
+                                type: string
+                              total:
+                                type: string
+                              transferable_balance:
+                                type: string
+                          hide_refund_wallet:
+                            type: boolean
+                          hide_cashback_wallet:
+                            type: boolean
+                          hide_special_cashback_wallet:
+                            type: boolean
+                          is_merchant:
+                            type: boolean
+                      coin_amount:
+                        type: string
+                      screen_lock_status:
+                        type: integer
+                  msg:
+                    type: string
+                x-examples:
+                  Example 1:
+                    code: 0
+                    data:
+                      pending_guide_processes: []
+                      buyer_wallet:
+                        user_id: '6958688'
+                        user_status: 1
+                        wallet_provider: 1
+                        wallet_balance:
+                          cashback: '0'
+                          incoming: '0'
+                          main: '1755600000'
+                          non_transferable_balance: '0'
+                          outgoing: '0'
+                          pending: '0'
+                          refund: '0'
+                          special_cashback: '0'
+                          total: '1755600000'
+                          transferable_balance: '1755600000'
+                        hide_refund_wallet: false
+                        hide_cashback_wallet: false
+                        hide_special_cashback_wallet: true
+                        is_merchant: false
+                        money_plus: null
+                      coin_amount: '20000000'
+                      screen_lock_status: 2
+                    msg: ''
+      tags:
+        - shopee-pay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: getWalletOverviewRequest
+              type: object
+              x-examples:
+                Example 1:
+                  meta:
+                    sdk_version: '20106'
+                    latitude: ''
+                    app_package_name: com.shopee.id
+                    device_name: 'iPhone13,2'
+                    os_version: '16.2'
+                    app_version: '29717'
+                    sz_blackbox: Uerhy3Sia8wNA5UjiA5JMQ==|yAVhKQJOENWILJT/zIXH53j+16mJhGdfmTqsDknwFcCWPtcIIK3RoGQkAX7JNIttYGKy5Z6ZfhWQ/20GCxcNtbYvrufrRChmYQ8cP75kmhzo6sx1mIysu8q1wXUs7PnVHAghQabICwE9a1KU|9KqY1skHNGazdzq/|07|2
+                    rn_version: '5068004'
+                    device_model: 'iPhone13,2'
+                    longitude: ''
+                    source: shopee
+                    os: 1
+                    device_brand: Apple
+                    device_id: 06091E0F078645DDB111019DE3FA2574
+                    arch: rn
+                    network_type: 1
+                    device_fingerprint: 06091E0F078645DDB111019DE3FA2574
+                    black_box: eyJ0b2tlbklkIjoiRVwvcENxNTdzaUd5eENON3M2XC9LQW9jUXZtdDhcL05mdXJUWGptaXo2VVNkXC9SWnZ4Y1g1cmY5cTlDUHRTTVpZNGt3Y0o4TUk3MzRkOTNteVZoOVk3cmdBPT0iLCJvcyI6ImlPUyIsInNlcUlkIjoiMTY3NDI3NTg4MzMzMTk0NzYzMiIsInByb2ZpbGVUaW1lIjoxMDEzLCJ2ZXJzaW9uIjoiMy4yLjcifQ==
+                    device_ip: ''
+                    is_jailbreak: false
+                    language: id
+                  data: {}
+              properties:
+                meta:
+                  type: object
+                  required:
+                    - source
+                    - os
+                    - device_id
+                  properties:
+                    sdk_version:
+                      type: string
+                    latitude:
+                      type: string
+                    app_package_name:
+                      type: string
+                    device_name:
+                      type: string
+                    os_version:
+                      type: string
+                    app_version:
+                      type: string
+                    sz_blackbox:
+                      type: string
+                    rn_version:
+                      type: string
+                    device_model:
+                      type: string
+                    longitude:
+                      type: string
+                    source:
+                      type: string
+                    os:
+                      type: integer
+                    device_brand:
+                      type: string
+                    device_id:
+                      type: string
+                    arch:
+                      type: string
+                    network_type:
+                      type: integer
+                    device_fingerprint:
+                      type: string
+                    black_box:
+                      type: string
+                    device_ip:
+                      type: string
+                    is_jailbreak:
+                      type: boolean
+                    language:
+                      type: string
+                data:
+                  type: object
+              required:
+                - meta
+      security:
+        - xToken: []
+components:
+  parameters: {}
+  securitySchemes:
+    xToken:
+      name: x-token
+      type: apiKey
+      in: header
