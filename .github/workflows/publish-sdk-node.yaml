@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - sdk/shopee-node/**
+  workflow_dispatch:
+    
 
 jobs:
   publish:
