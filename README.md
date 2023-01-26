@@ -1,6 +1,6 @@
-# siminvest
+# shopee
 
-Un-official [Shopee](https://www.shopee.co.id/) API Wrapper. API end point known by decompile the android APK.
+Un-official [Shopee](https://www.shopee.co.id/) API Wrapper.
 
 - [Have trouble ?](https://github.com/mychaelgo/shopee/issues)
 - [Submit changes/features ?](https://github.com/mychaelgo/shopee/pulls)
