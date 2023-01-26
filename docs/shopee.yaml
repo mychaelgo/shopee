@@ -1,12 +1,12 @@
 openapi: 3.0.0
 info:
   title: Shopee API
-  version: 1.0.1
+  version: 1.0.2
 servers:
   - url: 'https://api.gw.airpay.co.id'
     description: Shopee pay server
   - description: Shopee eCommerce server
-    url: 'https://mall.shopee.co.id'
+    url: 'https://shopee.co.id'
 paths:
   /user/v2/wallet-overview:
     parameters: []
@@ -195,6 +195,1634 @@ paths:
                 - meta
       security:
         - xToken: []
+  /api/v4/order/get_order_list:
+    get:
+      summary: Get order list
+      operationId: getOrderList
+      security: []
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: limit
+        - schema:
+            type: number
+          in: query
+          name: list_type
+        - schema:
+            type: number
+          in: query
+          name: offset
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: getOrderListResponse
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      details_list:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            status:
+                              type: object
+                              properties:
+                                status_label:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                                header_text:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                                    attributes:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          name:
+                                            type: string
+                                          value:
+                                            type: string
+                                          type:
+                                            type: integer
+                                header_image:
+                                  type: string
+                                popup_msg:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                                    attributes:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          name:
+                                            type: string
+                                          value:
+                                            type: string
+                                          type:
+                                            type: integer
+                                list_view_text:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                                    attributes:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          name:
+                                            type: string
+                                          value:
+                                            type: string
+                                          type:
+                                            type: integer
+                                list_view_sub_text:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                                    attributes:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          name:
+                                            type: string
+                                          value:
+                                            type: string
+                                          type:
+                                            type: integer
+                                list_view_status_label:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                            shipping:
+                              type: object
+                              properties:
+                                tracking_info:
+                                  type: object
+                                  properties:
+                                    driver_phone:
+                                      type: string
+                                    driver_name:
+                                      type: string
+                                    ctime:
+                                      type: integer
+                                    description:
+                                      type: string
+                                    type:
+                                      type: integer
+                                is_multi_parcel:
+                                  type: boolean
+                                num_parcels:
+                                  type: integer
+                                parcel_no:
+                                  type: integer
+                            info_card:
+                              type: object
+                              properties:
+                                order_id:
+                                  type: integer
+                                order_list_cards:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      shop_info:
+                                        type: object
+                                        properties:
+                                          shop_id:
+                                            type: integer
+                                          shop_name:
+                                            type: string
+                                          user_id:
+                                            type: integer
+                                          username:
+                                            type: string
+                                          portrait:
+                                            type: string
+                                          shop_tag:
+                                            type: integer
+                                      items:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            item_id:
+                                              type: integer
+                                            model_id:
+                                              type: integer
+                                            shop_id:
+                                              type: integer
+                                            name:
+                                              type: string
+                                            model_name:
+                                              type: string
+                                            image:
+                                              type: string
+                                            amount:
+                                              type: integer
+                                            status:
+                                              type: integer
+                                            item_price:
+                                              type: integer
+                                            price_before_discount:
+                                              type: integer
+                                            order_price:
+                                              type: integer
+                                            snapshot_id:
+                                              type: integer
+                                      order_id:
+                                        type: integer
+                                      parcel_cards:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            parcel_no:
+                                              type: integer
+                                            forder_id:
+                                              type: string
+                                            product_info:
+                                              type: object
+                                              properties:
+                                                item_groups:
+                                                  type: array
+                                                  items:
+                                                    type: object
+                                                    properties:
+                                                      items:
+                                                        type: array
+                                                        items:
+                                                          type: object
+                                                          properties:
+                                                            item_id:
+                                                              type: integer
+                                                            model_id:
+                                                              type: integer
+                                                            shop_id:
+                                                              type: integer
+                                                            name:
+                                                              type: string
+                                                            model_name:
+                                                              type: string
+                                                            image:
+                                                              type: string
+                                                            amount:
+                                                              type: integer
+                                                            ext_info:
+                                                              type: object
+                                                              properties:
+                                                                add_on_deal_id:
+                                                                  type: integer
+                                                                is_add_on_sub_item:
+                                                                  type: boolean
+                                                                free_return_day:
+                                                                  type: integer
+                                                                is_wholesale:
+                                                                  type: boolean
+                                                                is_pre_order:
+                                                                  type: boolean
+                                                                is_membership_gift:
+                                                                  type: boolean
+                                                                is_free_return:
+                                                                  type: boolean
+                                                            status:
+                                                              type: integer
+                                                            item_price:
+                                                              type: integer
+                                                            price_before_discount:
+                                                              type: integer
+                                                            order_price:
+                                                              type: integer
+                                                            snapshot_id:
+                                                              type: integer
+                                                      num_items:
+                                                        type: integer
+                                                total_num_items:
+                                                  type: integer
+                                product_count:
+                                  type: integer
+                                subtotal:
+                                  type: integer
+                                final_total:
+                                  type: integer
+                            primary_buttons:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                            guarantee:
+                              type: object
+                              properties:
+                                learn_more_url:
+                                  type: string
+                                is_extend_enabled:
+                                  type: boolean
+                            secondary_buttons:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                            list_type:
+                              type: integer
+                      next_offset:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error: 0
+                    data:
+                      details_list:
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1677257999'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            popup_msg:
+                              text: order_tooltip_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1677257999'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1677257999'
+                                  type: 7
+                            list_view_sub_text:
+                              text: order_list_sub_text_rate_product
+                              tl: false
+                              attributes:
+                                - name: coins_to_earn
+                                  value: '2500000'
+                                  type: 10
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1674372512
+                              description: 'Pesanan sudah sampai diterima oleh Anggota Keluarga / Teman: depan pintu rumah buyer '
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 127761938218754
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 240293511
+                                  shop_name: Vitabumin Official Shop
+                                  user_id: 240298973
+                                  username: officialvitabumin
+                                  portrait: 7be7436ddc2cf7a5634c3403c759a19b
+                                  shop_tag: 1
+                                items:
+                                  - item_id: 6238790641
+                                    model_id: 72563842220
+                                    shop_id: 240293511
+                                    name: Vitabumin 130ml - 3 Pcs
+                                    model_name: ''
+                                    image: 26066024e4b595ae5f1e1e1e71741a45
+                                    amount: 2
+                                    status: 1
+                                    item_price: 18486000000
+                                    price_before_discount: 23700000000
+                                    order_price: 18486000000
+                                    snapshot_id: 9401596196
+                                order_id: 127761938218754
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5083037658626560511'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 6238790641
+                                              model_id: 72563842220
+                                              shop_id: 240293511
+                                              name: Vitabumin 130ml - 3 Pcs
+                                              model_name: ''
+                                              image: 26066024e4b595ae5f1e1e1e71741a45
+                                              amount: 2
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 7
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 18486000000
+                                              price_before_discount: 23700000000
+                                              order_price: 18486000000
+                                              snapshot_id: 9401596196
+                                          num_items: 1
+                                      total_num_items: 1
+                            product_count: 1
+                            subtotal: 36072000000
+                            final_total: 36072000000
+                          primary_buttons:
+                            - id: 9
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                            - id: 24
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676912399'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            popup_msg:
+                              text: order_tooltip_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676912399'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676912399'
+                                  type: 7
+                            list_view_sub_text:
+                              text: order_list_sub_text_rate_product
+                              tl: false
+                              attributes:
+                                - name: coins_to_earn
+                                  value: '2500000'
+                                  type: 10
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1674131573
+                              description: 'Pesanan sudah sampai diterima oleh Anggota Keluarga / Teman: di depan pintu kak paketnya (  Info No Kurir : 083894545664 )'
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 127547416269704
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 347617196
+                                  shop_name: Regashi Official Shop
+                                  user_id: 347636771
+                                  username: regashi.indonesia
+                                  portrait: bd14bdd23b3d15fe572f72607afce700
+                                  shop_tag: 1
+                                items:
+                                  - item_id: 8513218948
+                                    model_id: 144398395301
+                                    shop_id: 347617196
+                                    name: Regashi Talenan Jerami Gandum Dua Sisi Anti Jamur Ramah Lingkungan | Double Side Cutting Board
+                                    model_name: 'D.Side Cutting Board,Blue'
+                                    image: ae60f7c31885336ae4711dd0b19ad2e6
+                                    amount: 1
+                                    status: 1
+                                    item_price: 5499900000
+                                    price_before_discount: 13999800000
+                                    order_price: 5499900000
+                                    snapshot_id: 8200733188
+                                  - item_id: 11471213952
+                                    model_id: 116837862008
+                                    shop_id: 347617196
+                                    name: Regashi Gunting Dapur Serbaguna 6 in 1 | 6 in 1 Scissors
+                                    model_name: Blue
+                                    image: 15d482eb37d594f8676955eaabdd7d63
+                                    amount: 1
+                                    status: 1
+                                    item_price: 2999900000
+                                    price_before_discount: 6099800000
+                                    order_price: 2999900000
+                                    snapshot_id: 7200765905
+                                order_id: 127547416269704
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5080961385794050196'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 8513218948
+                                              model_id: 144398395301
+                                              shop_id: 347617196
+                                              name: Regashi Talenan Jerami Gandum Dua Sisi Anti Jamur Ramah Lingkungan | Double Side Cutting Board
+                                              model_name: 'D.Side Cutting Board,Blue'
+                                              image: ae60f7c31885336ae4711dd0b19ad2e6
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 7
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 5499900000
+                                              price_before_discount: 13999800000
+                                              order_price: 5499900000
+                                              snapshot_id: 8200733188
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 11471213952
+                                              model_id: 116837862008
+                                              shop_id: 347617196
+                                              name: Regashi Gunting Dapur Serbaguna 6 in 1 | 6 in 1 Scissors
+                                              model_name: Blue
+                                              image: 15d482eb37d594f8676955eaabdd7d63
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 7
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 2999900000
+                                              price_before_discount: 6099800000
+                                              order_price: 2999900000
+                                              snapshot_id: 7200765905
+                                          num_items: 1
+                                      total_num_items: 2
+                            product_count: 2
+                            subtotal: 8599800000
+                            final_total: 8599800000
+                          primary_buttons:
+                            - id: 9
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                            - id: 24
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676653199'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            popup_msg:
+                              text: order_tooltip_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676653199'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676653199'
+                                  type: 7
+                            list_view_sub_text:
+                              text: order_list_sub_text_rate_product
+                              tl: false
+                              attributes:
+                                - name: coins_to_earn
+                                  value: '2500000'
+                                  type: 10
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1674024169
+                              description: 'Pesanan sudah sampai diterima oleh Yang bersangkutan: mychael'
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 127433854207868
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 48814300
+                                  shop_name: rak grosir
+                                  user_id: 48815689
+                                  username: kbeauty.official.id
+                                  portrait: 6441e196aa2e230383fe7131eee7493f
+                                  shop_tag: 3
+                                items:
+                                  - item_id: 23617756275
+                                    model_id: 183707583900
+                                    shop_id: 48814300
+                                    name: KB-M306 Mainan Anak Lato Lato Glow In The Dark  / Tek Tek / Lotto Lotto / Mainan Tradisional Adu Bola Glowing Jadul Tempo dulu
+                                    model_name: 'GLOW IN THE DARK,PINK'
+                                    image: sg-11134201-23010-bj55sm4j36lv50
+                                    amount: 1
+                                    status: 1
+                                    item_price: 699800000
+                                    price_before_discount: 2000000000
+                                    order_price: 699800000
+                                    snapshot_id: 7101343019
+                                  - item_id: 5155836355
+                                    model_id: 41268882469
+                                    shop_id: 48814300
+                                    name: KB-C46 Empeng Bayi | Dot Bayi Bulat / Datar | Baby Pacifier / Soother | Kompeng Bayi Food Grade
+                                    model_name: 'DOT DATAR,BIRU'
+                                    image: dfe05b4e7346396721a13e7154eb520a
+                                    amount: 1
+                                    status: 1
+                                    item_price: 390000000
+                                    price_before_discount: 400000000
+                                    order_price: 390000000
+                                    snapshot_id: 3977136409
+                                  - item_id: 5155836355
+                                    model_id: 41268882470
+                                    shop_id: 48814300
+                                    name: KB-C46 Empeng Bayi | Dot Bayi Bulat / Datar | Baby Pacifier / Soother | Kompeng Bayi Food Grade
+                                    model_name: 'DOT DATAR,PINK'
+                                    image: dfe05b4e7346396721a13e7154eb520a
+                                    amount: 1
+                                    status: 1
+                                    item_price: 390000000
+                                    price_before_discount: 400000000
+                                    order_price: 390000000
+                                    snapshot_id: 3977136409
+                                  - item_id: 13555702541
+                                    model_id: 132621090758
+                                    shop_id: 48814300
+                                    name: KB-C213 Ikat Rambut Polos Warna-Warni 100pcs / Ikat Rambut Kunciran Wanita Model Korea Simple Bahan Karet
+                                    model_name: PINKMUDA
+                                    image: be34129717df7fe436f3ff0f51ba407a
+                                    amount: 1
+                                    status: 1
+                                    item_price: 499500000
+                                    price_before_discount: 549900000
+                                    order_price: 499500000
+                                    snapshot_id: 4020994485
+                                  - item_id: 17131782641
+                                    model_id: 68541181998
+                                    shop_id: 48814300
+                                    name: KB-M248 M249 Bebek Mainan Mandi Bayi Mainan Anak Balita Semprotan Shower Air Mandi Kepala Bebek / Shower Boneka Bebek
+                                    model_name: 3BEBEK + SHOWER
+                                    image: fe79d4fc29bcd22fb3df2b982a713fd9
+                                    amount: 1
+                                    status: 1
+                                    item_price: 9500000000
+                                    price_before_discount: 18600000000
+                                    order_price: 9500000000
+                                    snapshot_id: 3956735075
+                                  - item_id: 18128986314
+                                    model_id: 220619499664
+                                    shop_id: 48814300
+                                    name: KB-M272 Mainan Mandi Anak Bayi Bentuk Ikan Buntal Berenang Bergerak Di Kolam Renang Air Bak Mandi Bath Toys / Mainan Putar Air
+                                    model_name: 'BEBEK,01'
+                                    image: id-11134207-22120-uybixm93oqlv93
+                                    amount: 1
+                                    status: 1
+                                    item_price: 660400000
+                                    price_before_discount: 1200000000
+                                    order_price: 660400000
+                                    snapshot_id: 5701196090
+                                  - item_id: 5155836355
+                                    model_id: 41268882468
+                                    shop_id: 48814300
+                                    name: KB-C46 Empeng Bayi | Dot Bayi Bulat / Datar | Baby Pacifier / Soother | Kompeng Bayi Food Grade
+                                    model_name: 'DOT DATAR,KUNING'
+                                    image: dfe05b4e7346396721a13e7154eb520a
+                                    amount: 1
+                                    status: 1
+                                    item_price: 390000000
+                                    price_before_discount: 400000000
+                                    order_price: 390000000
+                                    snapshot_id: 3977136409
+                                order_id: 127433854207868
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5080806230088706300'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 23617756275
+                                              model_id: 183707583900
+                                              shop_id: 48814300
+                                              name: KB-M306 Mainan Anak Lato Lato Glow In The Dark  / Tek Tek / Lotto Lotto / Mainan Tradisional Adu Bola Glowing Jadul Tempo dulu
+                                              model_name: 'GLOW IN THE DARK,PINK'
+                                              image: sg-11134201-23010-bj55sm4j36lv50
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 699800000
+                                              price_before_discount: 2000000000
+                                              order_price: 699800000
+                                              snapshot_id: 7101343019
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 5155836355
+                                              model_id: 41268882469
+                                              shop_id: 48814300
+                                              name: KB-C46 Empeng Bayi | Dot Bayi Bulat / Datar | Baby Pacifier / Soother | Kompeng Bayi Food Grade
+                                              model_name: 'DOT DATAR,BIRU'
+                                              image: dfe05b4e7346396721a13e7154eb520a
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 390000000
+                                              price_before_discount: 400000000
+                                              order_price: 390000000
+                                              snapshot_id: 3977136409
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 5155836355
+                                              model_id: 41268882470
+                                              shop_id: 48814300
+                                              name: KB-C46 Empeng Bayi | Dot Bayi Bulat / Datar | Baby Pacifier / Soother | Kompeng Bayi Food Grade
+                                              model_name: 'DOT DATAR,PINK'
+                                              image: dfe05b4e7346396721a13e7154eb520a
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 390000000
+                                              price_before_discount: 400000000
+                                              order_price: 390000000
+                                              snapshot_id: 3977136409
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 13555702541
+                                              model_id: 132621090758
+                                              shop_id: 48814300
+                                              name: KB-C213 Ikat Rambut Polos Warna-Warni 100pcs / Ikat Rambut Kunciran Wanita Model Korea Simple Bahan Karet
+                                              model_name: PINKMUDA
+                                              image: be34129717df7fe436f3ff0f51ba407a
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 499500000
+                                              price_before_discount: 549900000
+                                              order_price: 499500000
+                                              snapshot_id: 4020994485
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 17131782641
+                                              model_id: 68541181998
+                                              shop_id: 48814300
+                                              name: KB-M248 M249 Bebek Mainan Mandi Bayi Mainan Anak Balita Semprotan Shower Air Mandi Kepala Bebek / Shower Boneka Bebek
+                                              model_name: 3BEBEK + SHOWER
+                                              image: fe79d4fc29bcd22fb3df2b982a713fd9
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 9500000000
+                                              price_before_discount: 18600000000
+                                              order_price: 9500000000
+                                              snapshot_id: 3956735075
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 18128986314
+                                              model_id: 220619499664
+                                              shop_id: 48814300
+                                              name: KB-M272 Mainan Mandi Anak Bayi Bentuk Ikan Buntal Berenang Bergerak Di Kolam Renang Air Bak Mandi Bath Toys / Mainan Putar Air
+                                              model_name: 'BEBEK,01'
+                                              image: id-11134207-22120-uybixm93oqlv93
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 660400000
+                                              price_before_discount: 1200000000
+                                              order_price: 660400000
+                                              snapshot_id: 5701196090
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 5155836355
+                                              model_id: 41268882468
+                                              shop_id: 48814300
+                                              name: KB-C46 Empeng Bayi | Dot Bayi Bulat / Datar | Baby Pacifier / Soother | Kompeng Bayi Food Grade
+                                              model_name: 'DOT DATAR,KUNING'
+                                              image: dfe05b4e7346396721a13e7154eb520a
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 390000000
+                                              price_before_discount: 400000000
+                                              order_price: 390000000
+                                              snapshot_id: 3977136409
+                                          num_items: 1
+                                      total_num_items: 7
+                            product_count: 7
+                            subtotal: 13229700000
+                            final_total: 13229700000
+                          primary_buttons:
+                            - id: 9
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                            - id: 24
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676480399'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            popup_msg:
+                              text: order_tooltip_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676480399'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676480399'
+                                  type: 7
+                            list_view_sub_text:
+                              text: order_list_sub_text_rate_product
+                              tl: false
+                              attributes:
+                                - name: coins_to_earn
+                                  value: '2500000'
+                                  type: 10
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1673755920
+                              description: 'Pesanan sudah sampai diterima oleh Anggota Keluarga / Teman: Orang rmh'
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 127267284201716
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 100276992
+                                  shop_name: Bima Accessories Official Shop
+                                  user_id: 100278470
+                                  username: bima_acc
+                                  portrait: 7eb863b6d8f312a76d39335621102a0e
+                                  shop_tag: 1
+                                items:
+                                  - item_id: 3618195897
+                                    model_id: 112162521167
+                                    shop_id: 100276992
+                                    name: Adapter Micro SD  / Card Reader Micro SD
+                                    model_name: ''
+                                    image: sg-11134201-22100-yprthu6y9uiv83
+                                    amount: 1
+                                    status: 1
+                                    item_price: 149000000
+                                    price_before_discount: 500000000
+                                    order_price: 149000000
+                                    snapshot_id: 6500776783
+                                  - item_id: 12911433813
+                                    model_id: 58587810953
+                                    shop_id: 100276992
+                                    name: Adaptor Travel Charger SNI/ Sambungan Charger Kaki 3 ke Kaki 2 SNI / EU KR Plug Adapter Converter SNI
+                                    model_name: Steker
+                                    image: 2f675480cca07263d86af2a2b443da14
+                                    amount: 1
+                                    status: 1
+                                    item_price: 1090000000
+                                    price_before_discount: 1490000000
+                                    order_price: 1090000000
+                                    snapshot_id: 7000755554
+                                order_id: 127267284201716
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5078593474691584992'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 3618195897
+                                              model_id: 112162521167
+                                              shop_id: 100276992
+                                              name: Adapter Micro SD  / Card Reader Micro SD
+                                              model_name: ''
+                                              image: sg-11134201-22100-yprthu6y9uiv83
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 7
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 149000000
+                                              price_before_discount: 500000000
+                                              order_price: 149000000
+                                              snapshot_id: 6500776783
+                                          num_items: 1
+                                        - items:
+                                            - item_id: 12911433813
+                                              model_id: 58587810953
+                                              shop_id: 100276992
+                                              name: Adaptor Travel Charger SNI/ Sambungan Charger Kaki 3 ke Kaki 2 SNI / EU KR Plug Adapter Converter SNI
+                                              model_name: Steker
+                                              image: 2f675480cca07263d86af2a2b443da14
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 7
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 1090000000
+                                              price_before_discount: 1490000000
+                                              order_price: 1090000000
+                                              snapshot_id: 7000755554
+                                          num_items: 1
+                                      total_num_items: 2
+                            product_count: 2
+                            subtotal: 1639000000
+                            final_total: 1639000000
+                          primary_buttons:
+                            - id: 9
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                            - id: 24
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676307599'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            popup_msg:
+                              text: order_tooltip_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676307599'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1676307599'
+                                  type: 7
+                            list_view_sub_text:
+                              text: order_list_sub_text_rate_product
+                              tl: false
+                              attributes:
+                                - name: coins_to_earn
+                                  value: '2500000'
+                                  type: 10
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1673062901
+                              description: 'Pesanan sudah sampai diterima oleh Tetangga: '
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 126329830234618
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 240293511
+                                  shop_name: Vitabumin Official Shop
+                                  user_id: 240298973
+                                  username: officialvitabumin
+                                  portrait: 7be7436ddc2cf7a5634c3403c759a19b
+                                  shop_tag: 1
+                                items:
+                                  - item_id: 4722779441
+                                    model_id: 72563792758
+                                    shop_id: 240293511
+                                    name: Vitabumin 130ml - 1 pcs
+                                    model_name: ''
+                                    image: sg-11134201-22100-uq6dms682siv12
+                                    amount: 2
+                                    status: 1
+                                    item_price: 6563800000
+                                    price_before_discount: 7900000000
+                                    order_price: 6563800000
+                                    snapshot_id: 8600795310
+                                order_id: 126329830234618
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5071478441958915511'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 4722779441
+                                              model_id: 72563792758
+                                              shop_id: 240293511
+                                              name: Vitabumin 130ml - 1 pcs
+                                              model_name: ''
+                                              image: sg-11134201-22100-uq6dms682siv12
+                                              amount: 2
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 7
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 6563800000
+                                              price_before_discount: 7900000000
+                                              order_price: 6563800000
+                                              snapshot_id: 8600795310
+                                          num_items: 1
+                                      total_num_items: 1
+                            product_count: 1
+                            subtotal: 9622200000
+                            final_total: 9622200000
+                          primary_buttons:
+                            - id: 9
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                            - id: 24
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1675616399'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            popup_msg:
+                              text: order_tooltip_completed_buyer_not_rated_can_rate
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1675616399'
+                                  type: 7
+                                - name: coins_earned
+                                  value: '2500000'
+                                  type: 10
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated
+                              tl: false
+                              attributes:
+                                - name: rate_by_date
+                                  value: '1675616399'
+                                  type: 7
+                            list_view_sub_text:
+                              text: order_list_sub_text_rate_product
+                              tl: false
+                              attributes:
+                                - name: coins_to_earn
+                                  value: '2500000'
+                                  type: 10
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1672740302
+                              description: Pesanan sudah sampai  mychael(Penerima asli)
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 126329830234617
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 32452686
+                                  shop_name: Rumboko
+                                  user_id: 32454070
+                                  username: rumboko
+                                  portrait: f61926f70db56a5b82833077965e1db5
+                                  shop_tag: 2
+                                items:
+                                  - item_id: 448593349
+                                    model_id: 190679838687
+                                    shop_id: 32452686
+                                    name: GIZIDAT Original - Vitamin Nafsu Makan Anak & Penambah Berat Badan Anak
+                                    model_name: 2 Botol
+                                    image: 26c6fbbbd0ebe1933a9d72ee86dab887
+                                    amount: 1
+                                    status: 1
+                                    item_price: 12000000000
+                                    order_price: 12000000000
+                                    snapshot_id: 6200310118
+                                order_id: 126329830234617
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5070823778157572686'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 448593349
+                                              model_id: 190679838687
+                                              shop_id: 32452686
+                                              name: GIZIDAT Original - Vitamin Nafsu Makan Anak & Penambah Berat Badan Anak
+                                              model_name: 2 Botol
+                                              image: 26c6fbbbd0ebe1933a9d72ee86dab887
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 12000000000
+                                              order_price: 12000000000
+                                              snapshot_id: 6200310118
+                                          num_items: 1
+                                      total_num_items: 1
+                            product_count: 1
+                            subtotal: 9048500000
+                            final_total: 9048500000
+                          primary_buttons:
+                            - id: 9
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                            - id: 24
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_thank_you_shopping
+                              tl: false
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated_cannot_rate_seller_has_not_rated
+                              tl: false
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: '+6281297946726'
+                              driver_name: Edi Yusuf
+                              ctime: 1672016553
+                              description: Pesanan sudah sampai  anisa
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 125680356288226
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 51617648
+                                  shop_name: Anugrah_mart
+                                  user_id: 51619036
+                                  username: metadaniel2605
+                                  portrait: 469d0155ddf01af1d35e72bdc7c18b48
+                                  shop_tag: 2
+                                items:
+                                  - item_id: 1978721760
+                                    model_id: 35076439822
+                                    shop_id: 51617648
+                                    name: Susu enfagrow A+3 rasa VANILA dan atau ORIGINAL 1800 gram MURAHHH kemasan terbaru MFGM
+                                    model_name: ORIGINAL
+                                    image: befa72906b21c22edc7d309bee46d0e4
+                                    amount: 4
+                                    status: 1
+                                    item_price: 61900000000
+                                    order_price: 61900000000
+                                    snapshot_id: 9800489952
+                                order_id: 125680356288226
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5065548451124224648'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 1978721760
+                                              model_id: 35076439822
+                                              shop_id: 51617648
+                                              name: Susu enfagrow A+3 rasa VANILA dan atau ORIGINAL 1800 gram MURAHHH kemasan terbaru MFGM
+                                              model_name: ORIGINAL
+                                              image: befa72906b21c22edc7d309bee46d0e4
+                                              amount: 4
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 61900000000
+                                              order_price: 61900000000
+                                              snapshot_id: 9800489952
+                                          num_items: 1
+                                      total_num_items: 1
+                            product_count: 1
+                            subtotal: 241164400000
+                            final_total: 241164400000
+                          primary_buttons:
+                            - id: 24
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_thank_you_shopping
+                              tl: false
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated_cannot_rate_seller_has_not_rated
+                              tl: false
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1671787094
+                              description: 'Pesanan sudah sampai diterima oleh Yang bersangkutan: mychael'
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 125322395195823
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 337900226
+                                  shop_name: GUDANGIMPORT99
+                                  user_id: 337919801
+                                  username: gudang_import99
+                                  portrait: 477df2f69b8b512035f76e8f245c71b0
+                                  shop_tag: 2
+                                items:
+                                  - item_id: 9995974503
+                                    model_id: 170505809309
+                                    shop_id: 337900226
+                                    name: PRINTER BLUETOOTH MINI PORTABLE PRINTER THERMAL 58MM CETAK RESI NOTA STRUK PENJUALAN
+                                    model_name: ''
+                                    image: dfacda9971c434bf5ebfd799e02e31c3
+                                    amount: 1
+                                    status: 1
+                                    item_price: 24500000000
+                                    price_before_discount: 28500000000
+                                    order_price: 24500000000
+                                    snapshot_id: 3988777757
+                                order_id: 125322395195823
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5062733930449415226'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 9995974503
+                                              model_id: 170505809309
+                                              shop_id: 337900226
+                                              name: PRINTER BLUETOOTH MINI PORTABLE PRINTER THERMAL 58MM CETAK RESI NOTA STRUK PENJUALAN
+                                              model_name: ''
+                                              image: dfacda9971c434bf5ebfd799e02e31c3
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 24500000000
+                                              price_before_discount: 28500000000
+                                              order_price: 24500000000
+                                              snapshot_id: 3988777757
+                                          num_items: 1
+                                      total_num_items: 1
+                            product_count: 1
+                            subtotal: 20058600000
+                            final_total: 20058600000
+                          primary_buttons:
+                            - id: 24
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_thank_you_shopping
+                              tl: false
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated_cannot_rate_seller_has_not_rated
+                              tl: false
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1671000467
+                              description: 'Pesanan sudah sampai diterima oleh Anggota Keluarga / Teman: mychael'
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 124479982112336
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 557601719
+                                  shop_name: LAHOME Official Shop
+                                  user_id: 557621304
+                                  username: lahomeofficial
+                                  portrait: 82536cf46000e7c18c573d71bf8ddf4b
+                                  shop_tag: 1
+                                items:
+                                  - item_id: 18108782094
+                                    model_id: 212594601066
+                                    shop_id: 557601719
+                                    name: LaHome 3 in 1 Mesin Pembuat Kopi Kapsul Ganda Espresso Nespresso Dolce Gusto Ground Coffee Capsule Coffee Maker 3 In 1 Coffee Pod Machine Dolce Gusto Espresso K-cup Nespresso 20 Bar  Fit Dolce Gusto capsule & Nexpresso capsule & coffee Ground Powder & ES
+                                    model_name: Black(5in1)+Frother
+                                    image: f42dfeeb12262ec782cd1c0adb6fd580
+                                    amount: 1
+                                    status: 1
+                                    item_price: 142600000000
+                                    price_before_discount: 399900000000
+                                    order_price: 142600000000
+                                    snapshot_id: 4074543178
+                                order_id: 124479982112336
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5055458482323466719'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 18108782094
+                                              model_id: 212594601066
+                                              shop_id: 557601719
+                                              name: LaHome 3 in 1 Mesin Pembuat Kopi Kapsul Ganda Espresso Nespresso Dolce Gusto Ground Coffee Capsule Coffee Maker 3 In 1 Coffee Pod Machine Dolce Gusto Espresso K-cup Nespresso 20 Bar  Fit Dolce Gusto capsule & Nexpresso capsule & coffee Ground Powder & ES
+                                              model_name: Black(5in1)+Frother
+                                              image: f42dfeeb12262ec782cd1c0adb6fd580
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 7
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 142600000000
+                                              price_before_discount: 399900000000
+                                              order_price: 142600000000
+                                              snapshot_id: 4074543178
+                                          num_items: 1
+                                      total_num_items: 1
+                            product_count: 1
+                            subtotal: 141811800000
+                            final_total: 141811800000
+                          primary_buttons:
+                            - id: 24
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                            - id: 50
+                              extra:
+                                guarantee_info:
+                                  learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                          list_type: 3
+                        - status:
+                            status_label:
+                              text: label_order_completed
+                              tl: false
+                            header_text:
+                              text: order_status_text_completed_thank_you_shopping
+                              tl: false
+                            header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                            list_view_text:
+                              text: order_list_text_completed_enabled_buyer_has_not_rated_cannot_rate_seller_has_not_rated
+                              tl: false
+                            list_view_status_label:
+                              text: label_completed
+                              tl: false
+                          shipping:
+                            tracking_info:
+                              driver_phone: ''
+                              driver_name: ''
+                              ctime: 1671623958
+                              description: 'Pesanan sudah sampai diterima oleh Anggota Keluarga / Teman: di depan pintu kak paketnya (  Info No Kurir : 083894545664 )'
+                              type: 0
+                            is_multi_parcel: false
+                            num_parcels: 1
+                            parcel_no: 1
+                          info_card:
+                            order_id: 125213039280284
+                            order_list_cards:
+                              - shop_info:
+                                  shop_id: 945821
+                                  shop_name: Serbadigital ID Official Shop
+                                  user_id: 946473
+                                  username: serbadigital
+                                  portrait: a89cd5556fc9e9d878ce04b56c4024a1
+                                  shop_tag: 3
+                                items:
+                                  - item_id: 364918295
+                                    model_id: 54696349169
+                                    shop_id: 945821
+                                    name: CABLE KABEL Micro USB 5 Meter Cabel Power For IP Camera Action Camera SmartPhone Tablet PC
+                                    model_name: Putih
+                                    image: 035cdac8bc762c2fedfb26996764d539
+                                    amount: 1
+                                    status: 1
+                                    item_price: 2500000000
+                                    price_before_discount: 5000000000
+                                    order_price: 2500000000
+                                    snapshot_id: 4076953118
+                                order_id: 125213039280284
+                                parcel_cards:
+                                  - parcel_no: 1
+                                    forder_id: '5061405091042306821'
+                                    product_info:
+                                      item_groups:
+                                        - items:
+                                            - item_id: 364918295
+                                              model_id: 54696349169
+                                              shop_id: 945821
+                                              name: CABLE KABEL Micro USB 5 Meter Cabel Power For IP Camera Action Camera SmartPhone Tablet PC
+                                              model_name: Putih
+                                              image: 035cdac8bc762c2fedfb26996764d539
+                                              amount: 1
+                                              ext_info:
+                                                add_on_deal_id: 0
+                                                is_add_on_sub_item: false
+                                                free_return_day: 0
+                                                is_wholesale: false
+                                                is_pre_order: false
+                                                is_membership_gift: false
+                                                is_free_return: false
+                                              status: 1
+                                              item_price: 2500000000
+                                              price_before_discount: 5000000000
+                                              order_price: 2500000000
+                                              snapshot_id: 4076953118
+                                          num_items: 1
+                                      total_num_items: 1
+                            product_count: 1
+                            subtotal: 2600000000
+                            final_total: 2600000000
+                          primary_buttons:
+                            - id: 24
+                          guarantee:
+                            learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                            is_extend_enabled: true
+                          secondary_buttons:
+                            - id: 15
+                          list_type: 3
+                      next_offset: 10
+      tags:
+        - shopee-mall
 components:
   parameters: {}
   securitySchemes:
