@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Shopee API
-  version: 1.0.2
+  version: 1.0.3
 servers:
   - url: 'https://api.gw.airpay.co.id'
     description: Shopee pay server
@@ -1821,6 +1821,791 @@ paths:
                             - id: 15
                           list_type: 3
                       next_offset: 10
+      tags:
+        - shopee-mall
+  /api/v4/order/get_order_detail:
+    get:
+      summary: Get order detail
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: object
+                        properties:
+                          status_label:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                          header_text:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                              attributes:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      type: string
+                                    type:
+                                      type: integer
+                          header_image:
+                            type: string
+                          popup_msg:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                              attributes:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      type: string
+                                    type:
+                                      type: integer
+                          list_view_text:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                              attributes:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      type: string
+                                    type:
+                                      type: integer
+                          list_view_sub_text:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                              attributes:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      type: string
+                                    type:
+                                      type: integer
+                          list_view_status_label:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                      pc_shipping:
+                        type: object
+                        properties:
+                          forder_shipping_info_list:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                parcel_no:
+                                  type: integer
+                                tracking_number:
+                                  type: string
+                                tracking_info_list:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      driver_phone:
+                                        type: string
+                                      driver_name:
+                                        type: string
+                                      ctime:
+                                        type: integer
+                                      description:
+                                        type: string
+                                      license_plate_number:
+                                        type: string
+                                      receiver_name:
+                                        type: string
+                                      pin_code:
+                                        type: string
+                                      have_std_epod:
+                                        type: boolean
+                                      milestone:
+                                        type: object
+                                        properties:
+                                          image_url:
+                                            type: string
+                                          text:
+                                            type: string
+                                          color:
+                                            type: integer
+                                      epod:
+                                        type: string
+                                fulfilment_carrier_channel_id:
+                                  type: integer
+                                masked_carrier:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                                fulfilment_carrier:
+                                  type: object
+                                  properties:
+                                    text:
+                                      type: string
+                                    tl:
+                                      type: boolean
+                          is_multi_parcel:
+                            type: boolean
+                          num_parcels:
+                            type: integer
+                          can_modify_fulfilment_channel:
+                            type: boolean
+                          fulfilment_carrier_channel_id:
+                            type: integer
+                          masked_carrier:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                          fulfilment_carrier:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                          disable_edit_fulfilment_channel_reason:
+                            type: string
+                          use_standard_proof:
+                            type: boolean
+                      address:
+                        type: object
+                        properties:
+                          shipping_name:
+                            type: string
+                          shipping_phone:
+                            type: string
+                          shipping_address:
+                            type: string
+                          is_buyer_address_editable:
+                            type: boolean
+                      guarantee:
+                        type: object
+                        properties:
+                          learn_more_url:
+                            type: string
+                          is_extend_enabled:
+                            type: boolean
+                      info_card:
+                        type: object
+                        properties:
+                          parcel_cards:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                parcel_no:
+                                  type: integer
+                                forder_id:
+                                  type: string
+                                parcel_status_info:
+                                  type: object
+                                  properties:
+                                    label:
+                                      type: object
+                                      properties:
+                                        text:
+                                          type: string
+                                        tl:
+                                          type: boolean
+                                    tooltip:
+                                      type: object
+                                      properties:
+                                        text:
+                                          type: string
+                                        tl:
+                                          type: boolean
+                                    status:
+                                      type: integer
+                                shop_info:
+                                  type: object
+                                  properties:
+                                    shop_id:
+                                      type: integer
+                                    shop_name:
+                                      type: string
+                                    user_id:
+                                      type: integer
+                                    username:
+                                      type: string
+                                    portrait:
+                                      type: string
+                                    shop_tag:
+                                      type: integer
+                                product_info:
+                                  type: object
+                                  properties:
+                                    item_groups:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          items:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                item_id:
+                                                  type: integer
+                                                model_id:
+                                                  type: integer
+                                                shop_id:
+                                                  type: integer
+                                                name:
+                                                  type: string
+                                                model_name:
+                                                  type: string
+                                                image:
+                                                  type: string
+                                                amount:
+                                                  type: integer
+                                                ext_info:
+                                                  type: object
+                                                  properties:
+                                                    add_on_deal_id:
+                                                      type: integer
+                                                    is_add_on_sub_item:
+                                                      type: boolean
+                                                    free_return_day:
+                                                      type: integer
+                                                    is_wholesale:
+                                                      type: boolean
+                                                    is_pre_order:
+                                                      type: boolean
+                                                    is_membership_gift:
+                                                      type: boolean
+                                                    is_free_return:
+                                                      type: boolean
+                                                status:
+                                                  type: integer
+                                                item_price:
+                                                  type: integer
+                                                price_before_discount:
+                                                  type: integer
+                                                order_price:
+                                                  type: integer
+                                                snapshot_id:
+                                                  type: integer
+                                          num_items:
+                                            type: integer
+                                    total_num_items:
+                                      type: integer
+                                payment_info:
+                                  type: object
+                                  properties:
+                                    currency:
+                                      type: string
+                                    total_price:
+                                      type: integer
+                                    info_rows:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          info_label:
+                                            type: object
+                                            properties:
+                                              text:
+                                                type: string
+                                              tl:
+                                                type: boolean
+                                          info_value:
+                                            type: object
+                                            properties:
+                                              value:
+                                                type: string
+                                              type:
+                                                type: integer
+                                          info_tooltip:
+                                            type: object
+                                            properties:
+                                              tooltip:
+                                                type: object
+                                                properties:
+                                                  text:
+                                                    type: string
+                                                  tl:
+                                                    type: boolean
+                                extra_info:
+                                  type: object
+                                  properties:
+                                    is_shipment_grouped:
+                                      type: boolean
+                          is_multi_parcel:
+                            type: boolean
+                          subtotal:
+                            type: integer
+                          final_total:
+                            type: integer
+                          vat_amount:
+                            type: integer
+                          amount_paid:
+                            type: integer
+                      invoice:
+                        type: object
+                        properties:
+                          display_invoice:
+                            type: boolean
+                          shop_id:
+                            type: integer
+                      payment_method:
+                        type: object
+                        properties:
+                          payment_method:
+                            type: integer
+                          payment_channel_name:
+                            type: object
+                            properties:
+                              text:
+                                type: string
+                              tl:
+                                type: boolean
+                          can_change_payment_method:
+                            type: boolean
+                      coins:
+                        type: object
+                        properties:
+                          coin_earn:
+                            type: integer
+                          coin_basic_earn:
+                            type: integer
+                          coin_earn_by_shopee_voucher:
+                            type: integer
+                          redirect_to_coin_page:
+                            type: boolean
+                      pc_processing_info:
+                        type: object
+                        properties:
+                          create_time:
+                            type: integer
+                          shipping_confirm_time:
+                            type: integer
+                          pay_time:
+                            type: integer
+                          cancel_reason:
+                            type: integer
+                          delivery_time:
+                            type: integer
+                          complete_time:
+                            type: integer
+                          is_rated:
+                            type: boolean
+                          rate_to_seller_by_date:
+                            type: integer
+                          order_payment_method:
+                            type: integer
+                          order_request_type:
+                            type: integer
+                          paid_amount:
+                            type: integer
+                          order_sn:
+                            type: string
+                      secondary_buttons:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                      primary_buttons:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                      components:
+                        type: array
+                        items:
+                          type: integer
+                      list_type:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    data:
+                      status:
+                        status_label:
+                          text: label_order_completed
+                          tl: false
+                        header_text:
+                          text: order_status_text_completed_buyer_not_rated_can_rate
+                          tl: false
+                          attributes:
+                            - name: rate_by_date
+                              value: '1677257999'
+                              type: 7
+                            - name: coins_earned
+                              value: '2500000'
+                              type: 10
+                        header_image: 'https://deo.shopeemobile.com/shopee/shopee-orderprocessing-live-id/completed.png'
+                        popup_msg:
+                          text: order_tooltip_completed_buyer_not_rated_can_rate
+                          tl: false
+                          attributes:
+                            - name: rate_by_date
+                              value: '1677257999'
+                              type: 7
+                            - name: coins_earned
+                              value: '2500000'
+                              type: 10
+                        list_view_text:
+                          text: order_list_text_completed_enabled_buyer_has_not_rated
+                          tl: false
+                          attributes:
+                            - name: rate_by_date
+                              value: '1677257999'
+                              type: 7
+                        list_view_sub_text:
+                          text: order_list_sub_text_rate_product
+                          tl: false
+                          attributes:
+                            - name: coins_to_earn
+                              value: '2500000'
+                              type: 10
+                        list_view_status_label:
+                          text: label_completed
+                          tl: false
+                      pc_shipping:
+                        forder_shipping_info_list:
+                          - parcel_no: 1
+                            tracking_number: SPXID031881244731
+                            tracking_info_list:
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674372512
+                                description: 'Pesanan sudah sampai diterima oleh Anggota Keluarga / Teman: depan pintu rumah buyer '
+                                license_plate_number: ''
+                                receiver_name: 'depan pintu rumah buyer '
+                                pin_code: ''
+                                have_std_epod: true
+                                milestone:
+                                  image_url: 'https://cf.shopee.co.id/file/delivered_parcel_active_3x'
+                                  text: Terkirim
+                                  color: 2
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674343405
+                                description: Pesanan sedang diantar ke alamat tujuan
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                                milestone:
+                                  image_url: 'https://cf.shopee.co.id/file/domestic_transit_3x'
+                                  text: Pesanan dalam Pengiriman
+                                  color: 1
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674335386
+                                description: Pesanan sampai di lokasi transit terakhir Cipondoh Hub
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674317216
+                                description: 'Pesanan sedang dalam perjalanan  ke kota tujuan '
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674291162
+                                description: Pesanan telah sampai di lokasi sortir Cakung DC
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674256094
+                                description: 'Pesanan sedang dalam perjalanan  ke kota tujuan '
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674246317
+                                description: Pesanan telah sampai di lokasi sortir Solo DC
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674245319
+                                description: 'Pesanan telah dikirim dari lokasi transit '
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674220310
+                                description: Pesanan telah sampai di lokasi transit Umbulharjo First Mile Hub
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674214045
+                                description: Pesanan telah diserahkan ke kurir
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674098396
+                                description: Pengirim telah mengatur pengiriman. Menunggu paket diserahkan ke pihak jasa kirim.
+                                license_plate_number: ''
+                                receiver_name: ''
+                                pin_code: ''
+                                have_std_epod: false
+                                milestone:
+                                  image_url: 'https://cf.shopee.co.id/file/preparing_to_ship_3x'
+                                  text: Sedang Dikemas
+                                  color: 1
+                              - driver_phone: ''
+                                driver_name: ''
+                                ctime: 1674062738
+                                description: Pesanan Dibuat
+                                license_plate_number: ''
+                                receiver_name: ''
+                                epod: ''
+                                pin_code: ''
+                                have_std_epod: false
+                                milestone:
+                                  image_url: 'https://cf.shopee.co.id/file/order_placed_3x'
+                                  text: Pesanan Dibuat
+                                  color: 1
+                            fulfilment_carrier_channel_id: 80088
+                            masked_carrier:
+                              text: Reguler
+                              tl: true
+                            fulfilment_carrier:
+                              text: Shopee Xpress Standard
+                              tl: true
+                        is_multi_parcel: false
+                        num_parcels: 1
+                        can_modify_fulfilment_channel: false
+                        fulfilment_carrier_channel_id: 80088
+                        masked_carrier:
+                          text: Reguler
+                          tl: true
+                        fulfilment_carrier:
+                          text: Shopee Xpress Standard
+                          tl: true
+                        disable_edit_fulfilment_channel_reason: ''
+                        use_standard_proof: true
+                      address:
+                        shipping_name: mychael
+                        shipping_phone: '6281342179785'
+                        shipping_address: 'cluster asia greenlake city. jl. asia 2 no 86, KOTA TANGERANG, CIPONDOH, BANTEN, ID, 15146'
+                        is_buyer_address_editable: false
+                      guarantee:
+                        learn_more_url: 'https://shopee.co.id/m/garansi-shopee-id'
+                        is_extend_enabled: true
+                      info_card:
+                        parcel_cards:
+                          - parcel_no: 1
+                            forder_id: '5083037658626560511'
+                            parcel_status_info:
+                              label:
+                                text: label_forder_delivered
+                                tl: false
+                              tooltip:
+                                text: ''
+                                tl: false
+                              status: 5
+                            shop_info:
+                              shop_id: 240293511
+                              shop_name: Vitabumin Official Shop
+                              user_id: 240298973
+                              username: officialvitabumin
+                              portrait: 7be7436ddc2cf7a5634c3403c759a19b
+                              shop_tag: 1
+                            product_info:
+                              item_groups:
+                                - items:
+                                    - item_id: 6238790641
+                                      model_id: 72563842220
+                                      shop_id: 240293511
+                                      name: Vitabumin 130ml - 3 Pcs
+                                      model_name: ''
+                                      image: 26066024e4b595ae5f1e1e1e71741a45
+                                      amount: 2
+                                      ext_info:
+                                        add_on_deal_id: 0
+                                        is_add_on_sub_item: false
+                                        free_return_day: 7
+                                        is_wholesale: false
+                                        is_pre_order: false
+                                        is_membership_gift: false
+                                        is_free_return: false
+                                      status: 1
+                                      item_price: 18486000000
+                                      price_before_discount: 23700000000
+                                      order_price: 18486000000
+                                      snapshot_id: 9401596196
+                                  num_items: 1
+                              total_num_items: 1
+                            payment_info:
+                              currency: IDR
+                              total_price: 36072000000
+                              info_rows:
+                                - info_label:
+                                    text: label_odp_merchandise_subtotal
+                                    tl: false
+                                  info_value:
+                                    value: '36972000000'
+                                    type: 5
+                                - info_label:
+                                    text: label_odp_shipping
+                                    tl: false
+                                    attributes:
+                                      - name: shipping_carrier
+                                        type: 1
+                                        label:
+                                          text: Reguler
+                                          tl: false
+                                  info_value:
+                                    value: '4600000000'
+                                    type: 5
+                                - info_label:
+                                    text: label_odp_shipping_discount_subtotal
+                                    tl: false
+                                  info_value:
+                                    value: '-4600000000'
+                                    type: 5
+                                  info_tooltip:
+                                    tooltip:
+                                      text: label_odp_free_shipping_voucher_applied
+                                      tl: false
+                                - info_label:
+                                    text: label_odp_shop_voucher_applied
+                                    tl: false
+                                  info_value:
+                                    value: '-1000000000'
+                                    type: 5
+                                - info_label:
+                                    text: label_odp_buyer_service_fee
+                                    tl: false
+                                  info_value:
+                                    value: '100000000'
+                                    type: 5
+                            extra_info:
+                              is_shipment_grouped: false
+                        is_multi_parcel: false
+                        subtotal: 36072000000
+                        final_total: 36072000000
+                        vat_amount: 0
+                        amount_paid: 36072000000
+                      invoice:
+                        display_invoice: true
+                        shop_id: 240293511
+                      payment_method:
+                        payment_method: 1
+                        payment_channel_name:
+                          text: 'BCA [*7850]'
+                          tl: true
+                        can_change_payment_method: false
+                      coins:
+                        coin_earn: 1798600000
+                        coin_basic_earn: 0
+                        coin_earn_by_shopee_voucher: 1798600000
+                        redirect_to_coin_page: true
+                      pc_processing_info:
+                        create_time: 1674062738
+                        shipping_confirm_time: 1674062784
+                        pay_time: 1674062768
+                        cancel_reason: 0
+                        delivery_time: 1674214045
+                        complete_time: 1674623628
+                        is_rated: false
+                        rate_to_seller_by_date: 1677257999
+                        order_payment_method: 1
+                        order_request_type: 0
+                        paid_amount: 36072000000
+                        order_sn: 230119P5KGW3R2
+                      secondary_buttons:
+                        - id: 15
+                        - id: 24
+                      primary_buttons:
+                        - id: 9
+                      components:
+                        - 13
+                        - 0
+                        - 19
+                        - 8
+                        - 10
+                        - 9
+                        - 3
+                        - 5
+                        - 2
+                        - 1
+                        - 14
+                        - 4
+                        - 6
+                        - 7
+                      list_type: 3
+      operationId: getOrderDetail
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: order_id
+          required: true
       tags:
         - shopee-mall
 components:
